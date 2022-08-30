@@ -1,0 +1,30 @@
+{
+  "name": "mighty-wombats-api",
+  "version": "0.0.1",
+  "description": "REST",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit1",
+    "start": "nodemon app.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/yautay/mighty-wombats-api.git"
+  },
+  "keywords": [
+    "mighty",
+    "wombats"
+  ],
+  "author": "Michal Pielaszkiewicz",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/yautay/mighty-wombats-api/issues"
+  },
+  "homepage": "https://github.com/yautay/mighty-wombats-api#readme",
+  "dependencies": {
+    "express": "^4.18.1"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.19"
+  }
+}
