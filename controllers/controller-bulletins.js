@@ -1,18 +1,18 @@
 // noinspection JSUnusedLocalSymbols
 
-export function getNews(req, res, next) {
+export function getBulletins(req, res, next) {
     res.status(200).json({news: ["sdfsdfsdf", "sdfsdfsdf", "grergergergerg"]});
 }
 
-export function postNews(req, res, next) {
+export function postBulletin(req, res, next) {
     const title = req.body.title;
     const content = req.body.content;
 //    DB
     res.status(201).json({
-        message: "NEWS ADDED", post: {
+        message: "Bulletin posted successfully", post: {
             id: new Date().toISOString(),
             title: title,
-            content: content
+            content: content,
         }
     })
 }

@@ -4,7 +4,7 @@ import bodyParser from "body-parser";
 import expressJSDocSwagger from "express-jsdoc-swagger";
 import expressJSDocSwaggerOptions from "./swagger/swagger-jsdoc.js";
 // import swaggerDocument from "./swagger.json";
-import newsRouter from "./routes/route-news.js";
+import bulletinsRouter from "./routes/route-bulletins.js";
 
 
 let app;
@@ -13,7 +13,7 @@ app = express();
 // app.use(bodyParser.urlencoded());
 app.use(bodyParser.json());
 
-app.use('/news', newsRouter)
+app.use('/bulletins', bulletinsRouter)
 // app.use('/api-docs', swaggerUiExpress.serve);
 
 expressJSDocSwagger(app)(expressJSDocSwaggerOptions);
