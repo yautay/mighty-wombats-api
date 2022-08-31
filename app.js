@@ -5,7 +5,7 @@ import expressJSDocSwagger from "express-jsdoc-swagger";
 import expressJSDocSwaggerOptions from "./swagger/swagger-jsdoc.js";
 // import swaggerDocument from "./swagger.json";
 import bulletinsRouter from "./routes/route-bulletins.js";
-
+import sequelize from "./db/mysql.js";
 
 let app;
 app = express();
@@ -20,9 +20,19 @@ app.use((req, res, next) => {
     next();
 })
 
-app.use('/bulletins', bulletinsRouter)
+app.use('/bulletins-management', bulletinsRouter)
 // app.use('/api-docs', swaggerUiExpress.serve);
 
 expressJSDocSwagger(app)(expressJSDocSwaggerOptions);
 
-app.listen(3000);
+sequelize
+    .sync()
+    .then(result => {
+        console.log(result);
+        app.listen(3000);})
+    .catch(err => {
+    console.log(err)})
+
+// app.listen(3000);
+
+

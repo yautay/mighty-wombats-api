@@ -14,12 +14,14 @@ export function postBulletin(req, res, next) {
 
     const title = req.body.title;
     const content = req.body.content;
+    const date = req.body.date;
 //    DB
     res.status(201).json({
         message: "Bulletin posted successfully", post: {
             _id: new Date().toISOString(),
             title: title,
             content: content,
+            date: date
         }
     })
 }
