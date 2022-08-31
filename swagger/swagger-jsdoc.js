@@ -1,4 +1,4 @@
-import swaggerDefinition from "./swagger_definitions.js";
+import swaggerDefinition from "./swagger-definitions.js";
 
 const expressJSDocSwaggerOptions = {
     ...swaggerDefinition,

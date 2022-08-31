@@ -8,7 +8,7 @@
   "scripts": {
     "test": "node --experimental-vm-modules node_modules/jest/bin/jest.js",
     "start": "nodemon app.js",
-    "swagger-autogen": "node swagger/swagger_autogen.js"
+    "swagger-autogen": "node swagger/swagger-autogen.js"
   },
   "repository": {
     "type": "git",

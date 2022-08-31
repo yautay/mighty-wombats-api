@@ -1,3 +1,5 @@
+// noinspection JSUnusedLocalSymbols
+
 export function getNews(req, res, next) {
     res.status(200).json({news: ["sdfsdfsdf", "sdfsdfsdf", "grergergergerg"]});
 }
