@@ -1,6 +1,6 @@
 import express from "express";
-import {getBulletins, postBulletin} from "../controllers/controller-bulletins.js"
-
+import { getBulletins, postBulletin } from "../controllers/controller-bulletins.js"
+import { body } from "express-validator"
 
 const bulletinsRouter = express.Router();
 /**
@@ -14,6 +14,11 @@ const bulletinsRouter = express.Router();
  * @return {object} 200 - success response
  */
 bulletinsRouter.get('/', getBulletins);
-bulletinsRouter.post('/', postBulletin)
+bulletinsRouter.post(
+    '/post',
+    [
+        body("title").trim().isLength({min: 5}),
+        body("content").trim().isLength({min: 5})],
+    postBulletin)
 
 export default bulletinsRouter;
