@@ -1,4 +1,4 @@
-import sequelize from "../db/mysql.js";
+import sequelize from "../db/db.js";
 import { DataTypes } from "sequelize";
 
 
