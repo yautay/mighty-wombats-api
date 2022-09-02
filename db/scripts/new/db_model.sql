@@ -1,5 +1,3 @@
-CREATE DATABASE `wombats_db`;
-USE `wombats_db`;
 CREATE TABLE `squadron_pilots` (
                                    `squadron_pilot_id` int PRIMARY KEY AUTO_INCREMENT,
                                    `squadron_pilot_name` varchar(128) NOT NULL,
@@ -140,6 +138,49 @@ ALTER TABLE `bulletin_graphics` ADD CONSTRAINT `bulletin_graphic_uri` FOREIGN KE
 
 ALTER TABLE `bulletin_graphics` ADD CONSTRAINT `graphic_uri` FOREIGN KEY (`graphic_uri_id`) REFERENCES `graphics_uri` (`graphic_uri_id`);
 
-INSERT INTO plane_types (plane_type_value) VALUES ('F/A-18C'), ('AV-8B');
+INSERT INTO plane_types (plane_type_id, plane_type_value) VALUES (1, 'F/A-18C'), (2, 'AV-8B');
 
-INSERT INTO plane_statuses (plane_status_value) VALUES ('F/A-18C'), ('AV-8B');
+INSERT INTO mission_roles (mission_role_id, mission_role_value)
+VALUES  (1, 'TARCAP'),
+        (2, 'Rebasing'),
+        (3, 'Training'),
+        (4, 'SEAD'),
+        (5, 'Ground Attack'),
+        (6, 'BARCAP'),
+        (12, 'Test'),
+        (13, 'AIC'),
+        (14, 'Close Escort/Sweep'),
+        (17, 'Self Escort SEAD/Strike'),
+        (18, 'CAP'),
+        (19, 'GCI'),
+        (20, 'Deep strike'),
+        (21, 'Close escort'),
+        (22, 'AntiShip Strike'),
+        (23, 'Kadet'),
+        (24, 'Instruktor'),
+        (25, ''),
+        (26, 'Lead'),
+        (27, 'D/C'),
+        (28, 'Flight lead'),
+        (29, 'A/GIC');
+
+INSERT INTO pilots_statuses (status_id, status_value)
+VALUES  (1, 'CO'),
+        (2, 'XO'),
+        (3, 'PILOT'),
+        (4, 'CADET'),
+        (5, 'ExWombat');
+
+INSERT INTO plane_statuses (plane_status_id, plane_status_value)
+VALUES  (1, 'IN SERVICE'),
+        (2, 'MAINTENANCE'),
+        (3, 'RETIRED FROM SERVICE');
+
+INSERT INTO squadron_missions_types (missions_type_id, missions_type_value)
+VALUES (1, 'COMBAT'),
+       (2, 'TRAINING'),
+       (3, 'AIDED TRAINING'),
+       (4, 'LRP'),
+       (5, 'OTH'),
+       (6, 'EXAMS'),
+       (7, 'CQ')
