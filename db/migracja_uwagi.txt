@@ -1,0 +1,2 @@
+1) Ręcznie zaktualizować squadron planes!
+1) Ręcznie zaktualizować squadron pilots i przypisać samoloty!
