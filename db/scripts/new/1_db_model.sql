@@ -32,10 +32,10 @@ CREATE TABLE `pilots_statuses` (
 
 CREATE TABLE `squadron_planes` (
                                    `squadron_plane_id` int PRIMARY KEY AUTO_INCREMENT,
-                                   `squadron_plane_modex` int NOT NULL,
                                    `squadron_plane_type` int NOT NULL,
-                                   `squadron_plane_status` int NOT NULL,
-                                   `flight_hours` int NOT NULL
+                                   `squadron_plane_modex` int NOT NULL,
+                                   `squadron_plane_hours` int,
+                                   `squadron_plane_status` int NOT NULL
 );
 
 CREATE TABLE `plane_types` (
@@ -52,7 +52,7 @@ CREATE TABLE `pilot_missions` (
                                   `id` int PRIMARY KEY AUTO_INCREMENT,
                                   `squadron_mission_id` int NOT NULL,
                                   `squadron_pilot_id` int NOT NULL,
-                                  `squadron_plane_id` int,
+                                  `pilot_mission_squadron_plane_id` int,
                                   `pilot_mission_flight_role` int NOT NULL,
                                   `pilot_mission_flight_type` int NOT NULL,
                                   `pilot_mission_kill_aa_pvp` int,
@@ -105,9 +105,9 @@ CREATE TABLE `pilot_mission_flight_types` (
                                               `pilot_mission_flight_type_value` varchar(64)
 );
 
-CREATE TABLE `mission_statuses` (
-                                    `mission_status_id` int PRIMARY KEY AUTO_INCREMENT,
-                                    `mission_status_value` varchar(64)
+CREATE TABLE `pilot_mission_statuses` (
+                                          `pilot_mission_status_id` int PRIMARY KEY AUTO_INCREMENT,
+                                          `pilot_mission_status_value` varchar(64)
 );
 
 CREATE TABLE `bulletins` (
@@ -150,11 +150,11 @@ ALTER TABLE `pilot_missions` ADD CONSTRAINT `mission_types` FOREIGN KEY (`pilot_
 
 ALTER TABLE `pilot_mission_options` ADD CONSTRAINT `mission_options` FOREIGN KEY (`pilot_mission_id`) REFERENCES `pilot_missions` (`id`);
 
-ALTER TABLE `pilot_missions` ADD CONSTRAINT `mission_status` FOREIGN KEY (`pilot_mission_status`) REFERENCES `mission_statuses` (`mission_status_id`);
+ALTER TABLE `pilot_missions` ADD CONSTRAINT `mission_status` FOREIGN KEY (`pilot_mission_status`) REFERENCES `pilot_mission_statuses` (`pilot_mission_status_id`);
 
 ALTER TABLE `pilot_missions` ADD CONSTRAINT `squadron_mission` FOREIGN KEY (`squadron_mission_id`) REFERENCES `squadron_missions` (`squadron_mission_id`);
 
-ALTER TABLE `pilot_missions` ADD CONSTRAINT `squadron_plane` FOREIGN KEY (`squadron_plane_id`) REFERENCES `squadron_planes` (`squadron_plane_id`);
+ALTER TABLE `pilot_missions` ADD CONSTRAINT `squadron_plane` FOREIGN KEY (`pilot_mission_squadron_plane_id`) REFERENCES `squadron_planes` (`squadron_plane_id`);
 
 ALTER TABLE `pilot_mission_options` ADD CONSTRAINT `option_type` FOREIGN KEY (`pilot_mission_option_id`) REFERENCES `pilot_mission_options_types` (`pilot_mission_options_type_id`);
 

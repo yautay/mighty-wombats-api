@@ -55,3 +55,9 @@ INSERT INTO wombats_db.plane_statuses (plane_status_id, plane_status_value)
 VALUES  (1, 'IN SERVICE'),
         (2, 'MAINTENANCE'),
         (3, 'RETIRED FROM SERVICE');
+
+INSERT INTO wombats_db.pilot_mission_statuses (pilot_mission_status_id, pilot_mission_status_value)
+VALUES  (1, 'RTB'),
+        (2, 'MIA'),
+        (3, 'KIA'),
+        (4, 'POW');
