@@ -1,4 +1,4 @@
-INSERT INTO wombats_db.squadron_planes (squadron_plane_id, squadron_plane_modex, squadron_plane_type, squadron_plane_status, flight_hours)
+INSERT INTO wombats_db.squadron_planes (squadron_plane_id, squadron_plane_modex, squadron_plane_type, squadron_plane_status, squadron_plane_hours)
 VALUES  (19, 500, 1, 2, 6),
         (1, 501, 1, 1, 178),
         (2, 502, 1, 2, 68),
