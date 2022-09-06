@@ -42,14 +42,9 @@ VALUES  (1, 'CO'),
         (5, 'ExWombat');
 
 INSERT INTO wombats_db.squadron_missions_types (missions_type_id, missions_type_value)
-VALUES (1, 'HRP'),
-       (2, 'LRP'),
-       (3, 'EXAMS'),
-       (4, 'FREE TRAINING'),
-       (5, 'SQUADRON TRAINING'),
-       (6, 'CQ'),
-       (7, 'OTH'),
-       (8, 'JOINT OPS');
+VALUES (1, 'COMBAT'),
+       (2, 'TRAINING'),
+       (3, 'OTH');
 
 INSERT INTO wombats_db.plane_statuses (plane_status_id, plane_status_value)
 VALUES  (1, 'IN SERVICE'),
