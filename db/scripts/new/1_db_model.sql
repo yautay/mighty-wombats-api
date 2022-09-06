@@ -154,7 +154,7 @@ ALTER TABLE `pilot_missions` ADD CONSTRAINT `mission_status` FOREIGN KEY (`pilot
 
 ALTER TABLE `pilot_missions` ADD CONSTRAINT `squadron_mission` FOREIGN KEY (`squadron_mission_id`) REFERENCES `squadron_missions` (`squadron_mission_id`);
 
-ALTER TABLE `pilot_missions` ADD CONSTRAINT `squadron_plane` FOREIGN KEY (`pilot_mission_squadron_plane_id`) REFERENCES `squadron_planes` (`squadron_plane_id`);
+ALTER TABLE `pilot_missions` ADD CONSTRAINT `squadron_planes` FOREIGN KEY (`pilot_mission_squadron_plane_id`) REFERENCES `squadron_planes` (`squadron_plane_id`);
 
 ALTER TABLE `pilot_mission_options` ADD CONSTRAINT `option_type` FOREIGN KEY (`pilot_mission_option_id`) REFERENCES `pilot_mission_options_types` (`pilot_mission_options_type_id`);
 
