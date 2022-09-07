@@ -16,7 +16,9 @@ CREATE TABLE `squadron_greenie` (
 
 CREATE TABLE `greenie_score` (
                                  `greenie_score_id` int PRIMARY KEY AUTO_INCREMENT,
-                                 `greenie_score_value` varchar(64) UNIQUE NOT NULL
+                                 `greenie_score_wire` int,
+                                 `greenie_score_value` varchar(64) UNIQUE NOT NULL,
+                                 `greenie_score_points` decimal
 );
 
 CREATE TABLE `squadron_pilot_planes` (
@@ -73,7 +75,8 @@ CREATE TABLE `pilot_mission_options` (
 
 CREATE TABLE `pilot_mission_options_types` (
                                                `pilot_mission_options_type_id` int PRIMARY KEY AUTO_INCREMENT,
-                                               `pilot_mission_options_type_value` varchar(255) UNIQUE NOT NULL
+                                               `pilot_mission_options_type_value` varchar(255) UNIQUE NOT NULL,
+                                               'is_training' bool NOT NULL
 );
 
 CREATE TABLE `squadron_missions` (
