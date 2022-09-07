@@ -4,23 +4,24 @@ function Bulletin(sequelize) {
     sequelize.define(
         "bulletin",
         {
-            id: {
+            bulletin_id: {
                 type: DataTypes.INTEGER,
                 autoIncrement: true,
                 allowNull: false,
                 primaryKey: true
             },
-            title: {
+            bulletin_title: {
                 type: DataTypes.STRING,
                 allowNull: false,
             },
-            content: {
+            bulletin_text: {
                 type: DataTypes.TEXT,
                 allowNull: false,
             },
-            date: {
+            bulletin_date: {
                 type: DataTypes.DATEONLY,
-                defaultValue: DataTypes.NOW
+                defaultValue: DataTypes.NOW,
+                allowNull: false,
             }
         })
 }

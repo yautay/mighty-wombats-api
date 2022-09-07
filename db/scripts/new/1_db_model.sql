@@ -1,133 +1,133 @@
 CREATE TABLE `squadron_pilots` (
-                                   `squadron_pilot_id` int PRIMARY KEY AUTO_INCREMENT,
+                                   `squadron_pilot_id` tinyint PRIMARY KEY AUTO_INCREMENT,
                                    `squadron_pilot_name` varchar(128) NOT NULL,
-                                   `squadron_pilot_status` int NOT NULL,
+                                   `squadron_pilot_status` tinyint NOT NULL,
                                    `squadron_pilot_avatar` varchar(128),
                                    `squadron_pilot_story` text
 );
 
 CREATE TABLE `squadron_greenie` (
                                     `squadron_greenie_id` int PRIMARY KEY AUTO_INCREMENT,
-                                    `squadron_pilot_id` int NOT NULL,
-                                    `squadron_greenie_score_id` int NOT NULL,
+                                    `squadron_pilot_id` tinyint NOT NULL,
+                                    `squadron_greenie_score_id` tinyint NOT NULL,
                                     `squadron_greenie_points` decimal NOT NULL,
-                                    `squadron_greenie_night` boolean NOT NULL
+                                    `squadron_greenie_night` tinyint(1) NOT NULL
 );
 
 CREATE TABLE `greenie_score` (
-                                 `greenie_score_id` int PRIMARY KEY AUTO_INCREMENT,
+                                 `greenie_score_id` tinyint PRIMARY KEY AUTO_INCREMENT,
                                  `greenie_score_option` varchar(64) UNIQUE NOT NULL,
                                  `greenie_score_value` varchar(64) NOT NULL,
                                  `greenie_score_points` decimal NOT NULL
 );
 
 CREATE TABLE `squadron_pilot_planes` (
-                                         `id` int PRIMARY KEY AUTO_INCREMENT,
-                                         `squadron_pilot_id` int NOT NULL,
-                                         `squadron_plane_id` int NOT NULL
+                                         `id` tinyint PRIMARY KEY AUTO_INCREMENT,
+                                         `squadron_pilot_id` tinyint NOT NULL,
+                                         `squadron_plane_id` tinyint NOT NULL
 );
 
 CREATE TABLE `pilots_statuses` (
-                                   `status_id` int PRIMARY KEY AUTO_INCREMENT,
+                                   `status_id` tinyint PRIMARY KEY AUTO_INCREMENT,
                                    `status_value` varchar(64) UNIQUE NOT NULL
 );
 
 CREATE TABLE `squadron_planes` (
-                                   `squadron_plane_id` int PRIMARY KEY AUTO_INCREMENT,
-                                   `squadron_plane_type` int NOT NULL,
-                                   `squadron_plane_modex` int NOT NULL,
-                                   `squadron_plane_hours` int,
-                                   `squadron_plane_status` int NOT NULL
+                                   `squadron_plane_id` tinyint PRIMARY KEY AUTO_INCREMENT,
+                                   `squadron_plane_type` tinyint NOT NULL,
+                                   `squadron_plane_modex` smallint NOT NULL,
+                                   `squadron_plane_hours` smallint,
+                                   `squadron_plane_status` tinyint NOT NULL
 );
 
 CREATE TABLE `plane_types` (
-                               `plane_type_id` int PRIMARY KEY AUTO_INCREMENT,
+                               `plane_type_id` tinyint PRIMARY KEY AUTO_INCREMENT,
                                `plane_type_value` varchar(64) UNIQUE NOT NULL
 );
 
 CREATE TABLE `plane_statuses` (
-                                  `plane_status_id` int PRIMARY KEY AUTO_INCREMENT,
+                                  `plane_status_id` tinyint PRIMARY KEY AUTO_INCREMENT,
                                   `plane_status_value` varchar(64) UNIQUE NOT NULL
 );
 
 CREATE TABLE `pilot_missions` (
-                                  `id` int PRIMARY KEY AUTO_INCREMENT,
-                                  `squadron_mission_id` int NOT NULL,
-                                  `squadron_pilot_id` int NOT NULL,
-                                  `pilot_mission_squadron_plane_id` int,
-                                  `pilot_mission_flight_role` int NOT NULL,
-                                  `pilot_mission_flight_type` int NOT NULL,
-                                  `pilot_mission_kill_aa_pvp` int,
-                                  `pilot_mission_kill_aa_ai` int,
-                                  `pilot_mission_kill_ag` int,
-                                  `pilot_mission_kill_sead` int,
-                                  `pilot_mission_kill_ship` int,
-                                  `pilot_mission_kill_ff` int,
-                                  `pilot_mission_time` int NOT NULL,
-                                  `pilot_mission_status` int NOT NULL
+                                  `id` smallint PRIMARY KEY AUTO_INCREMENT,
+                                  `squadron_mission_id` smallint NOT NULL,
+                                  `squadron_pilot_id` tinyint NOT NULL,
+                                  `pilot_mission_squadron_plane_id` tinyint,
+                                  `pilot_mission_flight_role` tinyint NOT NULL,
+                                  `pilot_mission_flight_type` tinyint NOT NULL,
+                                  `pilot_mission_kill_aa_pvp` tinyint,
+                                  `pilot_mission_kill_aa_ai` tinyint,
+                                  `pilot_mission_kill_ag` tinyint,
+                                  `pilot_mission_kill_sead` tinyint,
+                                  `pilot_mission_kill_ship` tinyint,
+                                  `pilot_mission_kill_ff` tinyint,
+                                  `pilot_mission_time` tinyint NOT NULL,
+                                  `pilot_mission_status` tinyint NOT NULL
 );
 
 CREATE TABLE `pilot_mission_options` (
-                                         `id` int PRIMARY KEY AUTO_INCREMENT,
-                                         `pilot_mission_id` int NOT NULL,
-                                         `pilot_mission_option_id` int NOT NULL
+                                         `id` tinyint PRIMARY KEY AUTO_INCREMENT,
+                                         `pilot_mission_id` smallint NOT NULL,
+                                         `pilot_mission_option_id` tinyint NOT NULL
 );
 
 CREATE TABLE `pilot_mission_options_types` (
-                                               `pilot_mission_options_type_id` int PRIMARY KEY AUTO_INCREMENT,
-                                               `pilot_mission_options_type_value` varchar(255) UNIQUE NOT NULL,
-                                               `is_training` bool NOT NULL
+                                               `pilot_mission_options_type_id` tinyint PRIMARY KEY AUTO_INCREMENT,
+                                               `pilot_mission_options_type_value` varchar(64) UNIQUE NOT NULL,
+                                               `is_training` tinyint(1) NOT NULL
 );
 
 CREATE TABLE `squadron_missions` (
-                                     `squadron_mission_id` int PRIMARY KEY AUTO_INCREMENT,
+                                     `squadron_mission_id` smallint PRIMARY KEY AUTO_INCREMENT,
                                      `squadron_mission_title` varchar(255) NOT NULL,
-                                     `squadron_mission_time` int NOT NULL,
+                                     `squadron_mission_time` tinyint NOT NULL,
                                      `squadron_mission_date` date NOT NULL,
-                                     `squadron_mission_type` int NOT NULL,
-                                     `squadron_mission_details` int NOT NULL
+                                     `squadron_mission_type` tinyint NOT NULL,
+                                     `squadron_mission_details` tinyint NOT NULL
 );
 
 CREATE TABLE `squadron_missions_types` (
-                                           `missions_type_id` int PRIMARY KEY AUTO_INCREMENT,
-                                           `missions_type_value` varchar(255) UNIQUE NOT NULL
+                                           `missions_type_id` tinyint PRIMARY KEY AUTO_INCREMENT,
+                                           `missions_type_value` varchar(64) UNIQUE NOT NULL
 );
 
 CREATE TABLE `squadron_missions_details` (
-                                             `missions_detail_id` int PRIMARY KEY AUTO_INCREMENT,
-                                             `missions_detail_value` varchar(255) UNIQUE NOT NULL
+                                             `missions_detail_id` tinyint PRIMARY KEY AUTO_INCREMENT,
+                                             `missions_detail_value` varchar(64) UNIQUE NOT NULL
 );
 
 CREATE TABLE `pilot_mission_flight_roles` (
-                                              `pilot_mission_flight_role_id` int PRIMARY KEY AUTO_INCREMENT,
+                                              `pilot_mission_flight_role_id` tinyint PRIMARY KEY AUTO_INCREMENT,
                                               `pilot_mission_flight_role_value` varchar(64)
 );
 
 CREATE TABLE `pilot_mission_flight_types` (
-                                              `pilot_mission_flight_type_id` int PRIMARY KEY AUTO_INCREMENT,
+                                              `pilot_mission_flight_type_id` tinyint PRIMARY KEY AUTO_INCREMENT,
                                               `pilot_mission_flight_type_value` varchar(64)
 );
 
 CREATE TABLE `pilot_mission_statuses` (
-                                          `pilot_mission_status_id` int PRIMARY KEY AUTO_INCREMENT,
+                                          `pilot_mission_status_id` tinyint PRIMARY KEY AUTO_INCREMENT,
                                           `pilot_mission_status_value` varchar(64)
 );
 
 CREATE TABLE `bulletins` (
-                             `bulletin_id` int PRIMARY KEY AUTO_INCREMENT,
+                             `bulletin_id` smallint PRIMARY KEY AUTO_INCREMENT,
                              `bulletin_title` varchar(255) NOT NULL,
-                             `bulletin_text` varchar(2560),
+                             `bulletin_text` text NOT NULL,
                              `bulletin_date` date NOT NULL
 );
 
 CREATE TABLE `bulletin_graphics` (
-                                     `id` int PRIMARY KEY AUTO_INCREMENT,
-                                     `bulletin_id` int NOT NULL,
-                                     `graphic_uri_id` int NOT NULL
+                                     `id` smallint PRIMARY KEY AUTO_INCREMENT,
+                                     `bulletin_id` smallint NOT NULL,
+                                     `graphic_uri_id` smallint NOT NULL
 );
 
 CREATE TABLE `graphics_uri` (
-                                `graphic_uri_id` int PRIMARY KEY AUTO_INCREMENT,
+                                `graphic_uri_id` smallint PRIMARY KEY AUTO_INCREMENT,
                                 `graphic_uri` varchar(255) NOT NULL
 );
 
