@@ -1,20 +1,44 @@
 import bulletins from "../models/bulletins.js";
 // noinspection JSUnusedLocalSymbols
 
-import { validationResult } from "express-validator";
+import {validationResult} from "express-validator";
 import {sequelizeLogger} from "../utils/logger.js";
+
 
 export function getBulletins(req, res, next) {
     bulletins.findAll().then(
         bulletins => {
             res.status(200).json({
-                bulletins: bulletins
+                bulletins
             })
         }
     ).catch(err => {
         sequelizeLogger.error(err);
         res.status(500).json({
             message: "Server error", post: {
+                err: err.toString()
+            }
+        })
+    })
+}
+
+export function getBulletinById(req, res, next) {
+    const _id = req.query.bulletin_id
+    bulletins.findAll({
+        where: {
+            bulletin_id: _id
+        }
+    }).then(
+        bulletin => {
+            res.status(200).json({
+                bulletin
+            })
+        }
+    ).catch(err => {
+        sequelizeLogger.error(err);
+        res.status(500).json({
+            message: "Server error", get: {
+                par: req.params.bulletin_id,
                 err: err.toString()
             }
         })
@@ -37,9 +61,10 @@ export function postBulletin(req, res, next) {
     }).then(result => {
         res.status(201).json({
             message: "Bulletin created", post: {
-                title: title,
-                text: text,
-                date: date
+                id: result.bulletin_id,
+                title: result.bulletin_title,
+                text: result.bulletin_text,
+                date: result.bulletin_date,
             }
         })
     }).catch(err => {
