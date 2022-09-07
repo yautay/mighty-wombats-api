@@ -21,6 +21,11 @@ export default class bulletins extends Model {
     bulletin_date: {
       type: DataTypes.DATEONLY,
       allowNull: false
+    },
+    timestamp: {
+      type: DataTypes.DATE,
+      allowNull: true,
+      defaultValue: Sequelize.Sequelize.literal('CURRENT_TIMESTAMP')
     }
   }, {
     sequelize,

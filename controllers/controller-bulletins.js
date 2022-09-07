@@ -1,9 +1,24 @@
+import bulletins from "../models/bulletins.js";
 // noinspection JSUnusedLocalSymbols
 
 import { validationResult } from "express-validator";
+import {sequelizeLogger} from "../utils/logger.js";
 
 export function getBulletins(req, res, next) {
-    res.status(200).json({news: ["sdfsdfsdf", "sdfsdfsdf", "grergergergerg"]});
+    bulletins.findAll().then(
+        bulletins => {
+            res.status(200).json({
+                bulletins: bulletins
+            })
+        }
+    ).catch(err => {
+        sequelizeLogger.error(err);
+        res.status(500).json({
+            message: "Server error", post: {
+                err: err.toString()
+            }
+        })
+    })
 }
 
 export function postBulletin(req, res, next) {
@@ -13,15 +28,26 @@ export function postBulletin(req, res, next) {
     }
 
     const title = req.body.title;
-    const content = req.body.content;
+    const text = req.body.text;
     const date = req.body.date;
-//    DB
-    res.status(201).json({
-        message: "Bulletin posted successfully", post: {
-            _id: new Date().toISOString(),
-            title: title,
-            content: content,
-            date: date
-        }
+    bulletins.create({
+        bulletin_title: title,
+        bulletin_text: text,
+        bulletin_date: date
+    }).then(result => {
+        res.status(201).json({
+            message: "Bulletin created", post: {
+                title: title,
+                text: text,
+                date: date
+            }
+        })
+    }).catch(err => {
+        sequelizeLogger.error(err);
+        res.status(500).json({
+            message: "Server error", post: {
+                err: err.toString()
+            }
+        })
     })
 }

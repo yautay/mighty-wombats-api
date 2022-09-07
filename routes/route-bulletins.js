@@ -2,12 +2,14 @@ import express from "express";
 import {getBulletins, postBulletin} from "../controllers/controller-bulletins.js"
 import {body} from "express-validator"
 
+
 const bulletinsRouter = express.Router();
 /**
  * A bulletin
  * @typedef {object} Bulletin
+ * @property {int} id - The title id
  * @property {string} title.required - The title
- * @property {string} content.required - The content
+ * @property {string} text.required - The content
  * @property {string} date.required - The date of submission
  */
 /**
@@ -26,8 +28,7 @@ bulletinsRouter.post(
     '/bulletin',
     [
         body("title").trim().isLength({min: 5}),
-        body("content").trim().isLength({min: 5}),
+        body("text").trim().isLength({min: 5}),
         body("date").trim().isLength({min: 5})],
     postBulletin)
-
 export default bulletinsRouter;

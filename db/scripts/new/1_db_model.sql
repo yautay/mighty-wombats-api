@@ -117,7 +117,8 @@ CREATE TABLE `bulletins` (
                              `bulletin_id` smallint PRIMARY KEY AUTO_INCREMENT,
                              `bulletin_title` varchar(255) NOT NULL,
                              `bulletin_text` text NOT NULL,
-                             `bulletin_date` date NOT NULL
+                             `bulletin_date` date NOT NULL,
+                             `timestamp` datetime DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
 );
 
 CREATE TABLE `bulletin_graphics` (

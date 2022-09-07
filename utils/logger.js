@@ -23,6 +23,7 @@ winston.loggers.add(
                 }
             ),
             new winston.transports.File({filename: path.join(logDir, '/error.log'), level: 'error'}),
+            new winston.transports.File({filename: path.join(logDir, '/debug.log'), level: 'debug'}),
             new winston.transports.File({filename: path.join(logDir, '/combined.log')}),
         ]
     });
