@@ -90,7 +90,7 @@ VALUES  (1, 'RTB'),
 INSERT INTO wombats_db.greenie_score (greenie_score_id, greenie_score_option, greenie_score_value, greenie_score_points )
 VALUES  (1, '3\'rd wire', 'OK', 4),
         (2, '4\'th wire', '(OK)', 3),
-        (3, '2\'th wire', '(OK)', 3),
+        (3, '2\'nd wire', '(OK)', 3),
         (4, '1\'st wire', '-', 2),
         (5, 'BOLTER', 'B', 2.5),
         (6, 'CUT PASS', 'C', 0),
