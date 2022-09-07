@@ -25,14 +25,8 @@ app.use('/bulletins-management', bulletinsRouter)
 // app.use('/api-docs', swaggerUiExpress.serve);
 expressJSDocSwagger(app)(expressJSDocSwaggerOptions);
 
-console.log(sequelize.modelManager.models.length)
+// console.log(sequelize.modelManager.models.length)
 
-sequelize
-    .sync()
-    .then(result => {
-        console.log(result);
-        app.listen(3000);})
-    .catch(err => {
-    console.log(err)})
+app.listen(3000);
 
 

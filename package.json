@@ -8,7 +8,8 @@
   "scripts": {
     "test": "node --experimental-vm-modules node_modules/jest/bin/jest.js --watchAll",
     "start": "nodemon app.js",
-    "swagger-autogen": "node swagger/swagger-autogen.js"
+    "swagger-autogen": "node swagger/swagger-autogen.js",
+    "build-models": "sequelize-auto -h localhost -d wombats_db -u user -x user123 -p 3306 --dialect mysql -l esm"
   },
   "repository": {
     "type": "git",
