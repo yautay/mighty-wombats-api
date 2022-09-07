@@ -16,7 +16,7 @@ CREATE TABLE `squadron_greenie` (
 
 CREATE TABLE `greenie_score` (
                                  `greenie_score_id` int PRIMARY KEY AUTO_INCREMENT,
-                                 `greenie_score_wire` int,
+                                 `greenie_score_option` varchar(64) UNIQUE NOT NULL,
                                  `greenie_score_value` varchar(64) NOT NULL,
                                  `greenie_score_points` decimal NOT NULL
 );

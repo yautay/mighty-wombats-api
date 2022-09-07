@@ -87,12 +87,12 @@ VALUES  (1, 'RTB'),
         (3, 'KIA'),
         (4, 'POW');
 
-INSERT INTO wombats_db.greenie_score (greenie_score_id, greenie_score_wire, greenie_score_value, greenie_score_points )
-VALUES  (1, 3, 'OK', 4),
-        (2, 2, '(OK)', 3),
-        (3, 4, '(OK)', 3),
-        (4, 1, '-', 2),
-        (5, null, 'B', 2.5),
-        (6, null, 'C', 0),
-        (7, null, 'WO', 2),
-        (8, null, '_OK_', 5);
+INSERT INTO wombats_db.greenie_score (greenie_score_id, greenie_score_option, greenie_score_value, greenie_score_points )
+VALUES  (1, '3\'rd wire', 'OK', 4),
+        (2, '4\'th wire', '(OK)', 3),
+        (3, '2\'th wire', '(OK)', 3),
+        (4, '1\'st wire', '-', 2),
+        (5, 'BOLTER', 'B', 2.5),
+        (6, 'CUT PASS', 'C', 0),
+        (7, 'WAVE OFF', 'WO', 2),
+        (8, 'EXCEPTIONAL', '_OK_', 5);
