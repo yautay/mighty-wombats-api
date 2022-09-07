@@ -76,7 +76,7 @@ CREATE TABLE `pilot_mission_options` (
 CREATE TABLE `pilot_mission_options_types` (
                                                `pilot_mission_options_type_id` int PRIMARY KEY AUTO_INCREMENT,
                                                `pilot_mission_options_type_value` varchar(255) UNIQUE NOT NULL,
-                                               'is_training' bool NOT NULL
+                                               `is_training` bool NOT NULL
 );
 
 CREATE TABLE `squadron_missions` (
