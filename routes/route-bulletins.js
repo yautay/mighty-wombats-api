@@ -1,5 +1,7 @@
 import express from "express";
-import {getBulletinById, getBulletins, postBulletin} from "../controllers/controller-bulletins.js"
+import {getBulletins,
+        postBulletin}
+        from "../controllers/controller-bulletins.js"
 import {body} from "express-validator"
 
 
@@ -15,18 +17,20 @@ const bulletinsRouter = express.Router();
 /**
  * GET /bulletins-management/bulletins
  * @summary Fetch all bulletins
+ * @param {int} last - Last X bulletins selector
+ * @param {int} bulletin_id - bulletin ID selector
  * @return {object} 200 - success response
  */
 /**
- * POST /bulletins-management/bulletin
+ * POST /bulletins-management/bulletins
  * @summary Post single bulletin
  * @param {Bulletin} request.body.required - bulletin data
  * @return {object} 200 - success response
  */
+// bulletinsRouter.get('/bulletins', getBulletins);
 bulletinsRouter.get('/bulletins', getBulletins);
-bulletinsRouter.get('/bulletin', getBulletinById);
 bulletinsRouter.post(
-    '/bulletin',
+    '/bulletins',
     [
         body("title").trim().isLength({min: 5}),
         body("text").trim().isLength({min: 5}),

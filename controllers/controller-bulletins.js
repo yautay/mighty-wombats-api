@@ -6,43 +6,65 @@ import {sequelizeLogger} from "../utils/logger.js";
 
 
 export function getBulletins(req, res, next) {
-    bulletins.findAll().then(
-        bulletins => {
-            res.status(200).json({
-                bulletins
+    if (req.query.last) {
+        bulletins
+            .findAll({
+                limit: parseInt(req.query.last),
+                order: [['bulletin_id', 'DESC']]
             })
-        }
-    ).catch(err => {
-        sequelizeLogger.error(err);
-        res.status(500).json({
-            message: "Server error", post: {
-                err: err.toString()
-            }
-        })
-    })
-}
-
-export function getBulletinById(req, res, next) {
-    const _id = req.query.bulletin_id
-    bulletins.findAll({
-        where: {
-            bulletin_id: _id
-        }
-    }).then(
-        bulletin => {
-            res.status(200).json({
-                bulletin
+            .then(
+                bulletins => {
+                    res.status(200).json({
+                        bulletins
+                    })
+                }
+            ).catch(err => {
+            sequelizeLogger.error(err);
+            res.status(500).json({
+                message: "Server error", post: {
+                    err: err.toString()
+                }
             })
-        }
-    ).catch(err => {
-        sequelizeLogger.error(err);
-        res.status(500).json({
-            message: "Server error", get: {
-                par: req.params.bulletin_id,
-                err: err.toString()
-            }
         })
-    })
+    } else if (req.query.bulletin_id) {
+        bulletins
+            .findAll({
+                where: {
+                    bulletin_id: parseInt(req.query.bulletin_id)
+                }
+            })
+            .then(
+                bulletins => {
+                    res.status(200).json({
+                        bulletins
+                    })
+                }
+            ).catch(err => {
+            sequelizeLogger.error(err);
+            res.status(500).json({
+                message: "Server error", post: {
+                    err: err.toString()
+                }
+            })
+        })
+    } else {
+        bulletins
+            .findAll()
+            .then(
+                bulletins => {
+                    res.status(200).json({
+                        bulletins
+                    })
+                }
+            ).catch(err => {
+            sequelizeLogger.error(err);
+            res.status(500).json({
+                message: "Server error", post: {
+                    err: err.toString()
+                }
+            })
+        })
+    }
 }
 
 export function postBulletin(req, res, next) {
