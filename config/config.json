@@ -1,0 +1,26 @@
+{
+  "development": {
+    "username": "user",
+    "password": "user123",
+    "database": "wombats_db",
+    "host": "localhost",
+    "port": 3306,
+    "dialect": "mysql"
+  },
+  "test": {
+    "username": "user",
+    "password": "user123",
+    "database": "wombats_db",
+    "host": "localhost",
+    "port": 3306,
+    "dialect": "mysql"
+  },
+  "production": {
+    "username": "user",
+    "password": "user123",
+    "database": "wombats_db",
+    "host": "localhost",
+    "port": 3306,
+    "dialect": "mysql"
+  }
+}

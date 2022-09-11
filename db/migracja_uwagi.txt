@@ -1,0 +1,13 @@
+1) Ręcznie zaktualizować squadron planes!
+1) Ręcznie zaktualizować squadron pilots i przypisać samoloty!
+
+
+sequelize-auto \
+-h localhost \
+-d wombats_db \
+-u user \
+-x user123 \
+-p 3306 \
+--dialect mysql \
+-l esm \
+-o "./db/auto-models"
