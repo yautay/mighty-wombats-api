@@ -1,0 +1,53 @@
+version: "3.7"
+
+services:
+  rest_api:
+    build: .
+    container_name: rest_api
+    restart: always
+    environment:
+      - NODE_ENV=production
+    volumes:
+      - .:/usr/src/app
+    ports:
+      - '33443:8081'
+    networks:
+      - wombat-net
+    depends_on:
+      - mysqldb
+    links:
+      - mysqldb
+    command: npm start
+
+  mysqldb:
+    container_name: mysqldb
+    image: mysql:8
+    restart: always
+    command: --default-authentication-plugin=mysql_native_password
+    volumes:
+      - wombat_db-data:/var/lib/mysql
+      - ./db/scripts/new:/docker-entrypoint-initdb.d
+    environment:
+      - MYSQL_ROOT_PASSWORD=hornet
+      - MYSQL_DATABASE=wombats_db
+      - MYSQL_USER=user
+      - MYSQL_PASSWORD=user123
+    ports:
+      - '33006:3306'
+    networks:
+      - wombat-net
+
+  adminer:
+    image: adminer
+    container_name: adminer
+    restart: always
+    ports:
+      - '33007:8080'
+    networks:
+      - wombat-net
+
+volumes:
+  wombat_db-data:
+
+networks:
+  wombat-net:
