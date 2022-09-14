@@ -17,7 +17,7 @@ services:
       - mysqldb
     links:
       - mysqldb
-    command: npm serve
+    command: npm start
 
   mysqldb:
     container_name: mysqldb
