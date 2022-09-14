@@ -19,7 +19,7 @@ winston.loggers.add(
         'transports': [
             new winston.transports.Console(
                 {
-                    colorize: 'all'
+                    colorize: 'all', level: 'debug'
                 }
             ),
             new winston.transports.File({filename: path.join(logDir, '/error.log'), level: 'error'}),

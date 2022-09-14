@@ -6,7 +6,7 @@ services:
     container_name: rest_api
     restart: always
     environment:
-      - NODE_ENV=production
+      - NODE_ENV=${NODE_ENV}
     volumes:
       - .:/usr/src/app
     ports:
@@ -17,7 +17,7 @@ services:
       - mysqldb
     links:
       - mysqldb
-    command: npm start
+    command: npm serve
 
   mysqldb:
     container_name: mysqldb
