@@ -4,16 +4,16 @@ import initModels from "../models/init-models.js";
 import * as dotenv from 'dotenv';
 dotenv.config();
 
+let db_uri = undefined;
 if (process.env.NODE_ENV === "docker") {
-        const db_uri = process.env.DB_URL_DOCKER
-} else if (process.env.NODE_ENV === "development") {
-        const db_uri = process.env.DB_URL_LOCAL
+        db_uri = process.env.DB_URL_DOCKER
+} else if (process.env.DEVELOP) {
+        db_uri = process.env.DB_URL_LOCAL
 } else {
-        const db_uri = process.env.DB_URL_PRODUCTION
+        db_uri = process.env.DB_URL_PRODUCTION
 }
-
-const sequelize = new Sequelize(
-    db_uri,
+console.log(db_uri);
+const sequelize = new Sequelize(db_uri,
     {
         logging: msg => sequelizeLogger.debug(msg)});
 

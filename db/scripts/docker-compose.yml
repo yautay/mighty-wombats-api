@@ -1,0 +1,65 @@
+version: "3.7"
+
+services:
+  mysqldb:
+    container_name: mysqldb-wombats
+    image: mysql:8
+    restart: always
+    command: --default-authentication-plugin=mysql_native_password
+    volumes:
+      - wombat_db-data:/var/lib/mysql
+      - ./scripts/new:/docker-entrypoint-initdb.d
+    environment:
+      - MYSQL_ROOT_PASSWORD=hornet
+      - MYSQL_DATABASE=wombats_db
+      - MYSQL_USER=user
+      - MYSQL_PASSWORD=user123
+    ports:
+      - '3306:3306'
+    networks:
+      - wombat-net
+
+  mysqldb-legacy:
+    container_name: mysqldb-wombats-legacy
+    image: mysql:8
+    restart: always
+    command: --default-authentication-plugin=mysql_native_password
+    volumes:
+      - wombat_db-data-legacy:/var/lib/mysql
+      - ./scripts/legacy:/docker-entrypoint-initdb.d
+    environment:
+      - MYSQL_ROOT_PASSWORD=hornet
+      - MYSQL_DATABASE=wombats_db
+      - MYSQL_USER=user
+      - MYSQL_PASSWORD=user123
+    ports:
+      - '3316:3306'
+    networks:
+      - wombat-net-legacy
+
+  adminer:
+    image: adminer
+    container_name: adminer
+    restart: always
+    ports:
+      - '8080:8080'
+    networks:
+      - wombat-net
+
+  adminer-legacy:
+    image: adminer
+    container_name: adminer-legacy
+    restart: always
+    ports:
+      - '8088:8080'
+    networks:
+      - wombat-net-legacy
+
+volumes:
+  wombat_db-data:
+  wombat_db-data-legacy:
+
+networks:
+  wombat-net:
+  wombat-net-legacy:
+
