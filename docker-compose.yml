@@ -17,7 +17,8 @@ services:
     volumes:
       - .:/usr/src/app
     ports:
-      - '33443:3000'
+      - '33443:3000',
+      - '33480:80'
     networks:
       - wombat-net
     depends_on:
