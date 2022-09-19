@@ -1,3 +1,6 @@
+import * as dotenv from 'dotenv';
+dotenv.config();
+
 const swaggerDefinition = {
     info: {
         version: '0.1.0',      // by default: '1.0.0'
@@ -14,11 +17,11 @@ const swaggerDefinition = {
             scheme: 'basic',
         },
     },
-    host: "localhost:3000",      // by default: 'localhost:3000'
+    host: process.env.DOMAIN,      // by default: 'localhost:3000'
     tags: [        // by default: empty Array
         {
-            name: 'news',         // Tag name
-            description: 'Operations with News',  // Tag description
+            name: 'bulletins',         // Tag name
+            description: 'Operations with Bulletins',  // Tag description
         },
     ],
 }
