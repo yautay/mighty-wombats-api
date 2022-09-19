@@ -10,7 +10,7 @@ services:
     volumes:
       - .:/usr/src/app
     ports:
-      - '33000:3000',
+      - '33000:3000'
       - '33480:80'
     networks:
       - wombat-net
@@ -35,15 +35,6 @@ services:
       - MYSQL_PASSWORD=${DB_USER_PASS}
     ports:
       - '33006:3306'
-    networks:
-      - wombat-net
-
-  adminer:
-    image: adminer
-    container_name: adminer
-    restart: always
-    ports:
-      - '33007:8080'
     networks:
       - wombat-net
 
